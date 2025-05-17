@@ -4,8 +4,11 @@
 '''
 # Import Flask, render_template, request from the flask pramework package : TODO
 # Import the sentiment_analyzer function from the package created: TODO
+from flask import Flask, render_template, request
+from SentimentAnalysis.sentiment_analysis import sentiment_analyzer
 
 #Initiate the flask app : TODO
+app = Flask(__main__)
 
 @app.route("/sentimentAnalyzer")
 def sent_analyzer():
@@ -15,6 +18,12 @@ def sent_analyzer():
         score for the provided text.
     '''
     # TODO
+    text_to_analyze = request.args.get('textToAnalyze')
+
+    response = sentiment_analyzer(text_to_analyze)
+
+    label = response['label']
+    label_
 
 @app.route("/")
 def render_index_page():
